@@ -1,0 +1,19 @@
+.formBar {
+    width: 40%;
+    margin: 5em auto;
+	
+  
+    overflow: hidden;
+    border: 5px solid rgba(255, 255, 255, 0.85);
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px; 
+    border-radius: 5px;
+}
+
+.form-group{
+    margin: 1em auto !important;
+}
+
+.headerColor{
+	color:white;
+}

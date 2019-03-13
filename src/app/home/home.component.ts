@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
   country: string;
   locationType: string;
   countryID: string;
-  constructor() { }
+  constructor(private snackBar : MatSnackBar) { }
   
   //A function to handle input searches
   onSearch(form)
@@ -48,8 +49,11 @@ export class HomeComponent implements OnInit {
 			 
 		 }).catch(error =>{
 			
-			console.log(error);
-		 
+			
+		      this.snackBar.open(error, "OK", {
+	
+		});
+
 		 })
   
   }

@@ -1,17 +1,20 @@
 
 	<div class="w3ls-weather">
 		<h1>Weather Report</h1>
-		
+		<h4 style="text-align:center; color:white">Please enter the name of a location to begin with the search</h4>
 		 <form #form = "ngForm" (ngSubmit)= "onSearch(form)">
-			<div class="input-group mb-3 searchBar">
+			<div  class="input-group mb-3 searchBar">
 			 
 			  <input type="text" class="form-control" name="locationName" placeholder="Location Name" aria-label="Location Name" aria-describedby="basic-addon2" ngModel required>
 			  <div class="input-group-append">
-				<button [disabled]="!form.valid" class="btn btn-outline-secondary" type="submit">Search <i class="fa fa-search-plus"></i> </button>
+				<button [disabled]="!form.valid" class="btn btn-outline-secondary" type="submit">Search </button>
 			  </div>
 			  
 			</div>
 		</form>
+		
+		
+		
 		<div class="w3ls-weather-agileinfo"> 
 			<div class="weather-left">
 				<div class="weather-left-text">
