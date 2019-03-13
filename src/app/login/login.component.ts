@@ -9,12 +9,14 @@ import { MatSnackBar } from '@angular/material';
 })
 export class LoginComponent implements OnInit {
 
+  //A variable to handle events using a loader based on response or error
+  isWait: boolean  = false;
   constructor(private router: Router, private snackBar : MatSnackBar) { }
 
   onAuth(form)
   {
   
-		console.log(form.value);
+		this.isWait = true;
 		
 		let loginDetails = {
 		
@@ -25,7 +27,7 @@ export class LoginComponent implements OnInit {
 		axios.post("https://service1-weather-app.herokuapp.com/auth", loginDetails)
 		 .then(response =>{
 		 
-		    
+		    this.isWait = false;
 		
 		    if(response.data.exists)
 			{
@@ -40,8 +42,8 @@ export class LoginComponent implements OnInit {
 			 
 			 
 		 }).catch(error =>{
-			
-			console.log(error);
+			this.isWait = false;
+			this.snackBar.open(error, "OK", {});
 		 
 		 })
   

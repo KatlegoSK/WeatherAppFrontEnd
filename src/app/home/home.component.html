@@ -1,5 +1,6 @@
 
 	<div class="w3ls-weather">
+		
 		<h1>Weather Report</h1>
 		<h4 style="text-align:center; color:white">Please enter the name of a location to begin with the search</h4>
 		 <form #form = "ngForm" (ngSubmit)= "onSearch(form)">
@@ -7,7 +8,7 @@
 			 
 			  <input type="text" class="form-control" name="locationName" placeholder="Location Name" aria-label="Location Name" aria-describedby="basic-addon2" ngModel required>
 			  <div class="input-group-append">
-				<button [disabled]="!form.valid" class="btn btn-outline-secondary" type="submit">Search </button>
+				<button [disabled]="!form.valid" class="btn btn-outline-secondary" type="submit">Search   <spinner  *ngIf="isWait"  [size]="20"  [tickness]="2" ></spinner></button>
 			  </div>
 			  
 			</div>
@@ -71,7 +72,29 @@
 				
 			</div>
 			<div class="clear"></div>
+				
+				
+				
+			
 		</div>  
+		
+		<div *ngIf="province" class="refresher">
+		
+		     <h3 style="color:white">Refresh Interval </h3>
+			<select>
+				  <option (click)="onRefresh15()" selected value="15">15</option>
+				  <option (click)="onRefresh30()" value="30">30</option>
+				  <option (click)="onRefresh45()" value="45">45</option>
+				  <option (click)="onRefresh60()" value="60">60</option>
+		   </select>
+				
+
+		</div>
+		
+			
+			
+			
+		
 	</div>	
     <div class="copyw3-agile">
 	<p>  Weather Report by:  <a href="https://url222-url.firebaseapp.com" target="_blank">Katlego</a></p>

@@ -13,7 +13,7 @@
 			<input type="password" class="form-control" name="password" id="password" placeholder="Password" ngModel required>
 		  </div>
 		  
-		  <button class="btn btn-outline-secondary"  [disabled]="!form.valid" type="submit" >Submit</button>
+		  <button class="btn btn-outline-secondary"  [disabled]="!form.valid" type="submit" >Submit <spinner  *ngIf="isWait"  [size]="20"  [tickness]="2" ></spinner></button>
 		</form>
 		 
 	</div>	

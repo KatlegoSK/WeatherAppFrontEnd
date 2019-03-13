@@ -8,6 +8,8 @@ import { MatSnackBar } from '@angular/material';
 })
 export class HomeComponent implements OnInit {
 
+  //Information to be displayed to the user
+  
   locationDescription: string;
   locationDate: string;
   imperial: any;
@@ -17,25 +19,32 @@ export class HomeComponent implements OnInit {
   country: string;
   locationType: string;
   countryID: string;
+  
+  //A variable to handle events using a loader based on response or error
+  isWait: boolean  = false;
+  
+  //MatSnackBar is an Angular material feature which displays information in a user friendly format
   constructor(private snackBar : MatSnackBar) { }
   
   //A function to handle input searches
   onSearch(form)
   {
-	
+	    this.isWait = true;
 		
 		let locationDetails = {
 
 			locationName: form.value.locationName
 
 		}
-		console.log(locationDetails);
+		
 		
 		axios.post("https://service1-weather-app.herokuapp.com/service1", locationDetails)
 		 .then(response =>{
 		 
+		    this.isWait = false;
+			
 		    form.reset();
-			console.log(response.data);
+
 		     this.locationDescription = response.data.locationDetails.LocalizedName;
 			 this.locationDate = response.data.locationCondition.LocalObservationDateTime;
 			 this.province =  response.data.locationDetails.AdministrativeArea.LocalizedName;
@@ -49,8 +58,8 @@ export class HomeComponent implements OnInit {
 			 
 		 }).catch(error =>{
 			
-			
-		      this.snackBar.open(error, "OK", {
+			  this.isWait = false;
+		      this.snackBar.open("An unexpected error occured", "OK", {
 	
 		});
 
